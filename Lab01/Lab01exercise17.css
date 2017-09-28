@@ -21,3 +21,26 @@ body {
    color: #728B96;
    font-style: italic;
 }
+a:link {
+font-weight: bold;
+color: #47B3D7;
+}
+a:visited {
+color: #BB78FF;
+}
+a:hover {
+background-color: #FFFF99;
+}
+nav ul li {
+list-style: none;
+display: inline;
+
+margin: 1em;
+
+}
+nav {
+padding: 0.25em;
+}
+nav a {
+padding: 0.25em;
+}
