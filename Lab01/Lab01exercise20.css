@@ -60,6 +60,7 @@ figure {
    padding: 1.5em;
    border: solid 1pt #999999;
 }
+
 h3+p+p { 
    margin: 2em;
 }
