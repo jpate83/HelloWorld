@@ -6,6 +6,10 @@ body {
  font-family: Georgia, Cambria, "Times New Roman", serif;
 }
 
+[title^="Calgary"] {
+cursor: help; text-decoration: none; padding-bottom: 3px;
+border-bottom: 2px dotted blue;
+}
 
 
 
