@@ -2,43 +2,35 @@
 var fruitsInFruitsList = ['Apple', 'Orange', 'Peach', 'Plum', 'Pear', 'Passionfruit', 'Grapefruit', 'Strawberry'];
 var fruitsInBasket = [];
 
-var fruitsListContainer, basketContainer;
-
-window.onload = function() {
-    fruitsListContainer = document.getElementById('fruits');
-    basketContainer = document.getElementById('basket');
-    drawDom(); // init lists
+$(document).ready(function() {
+    var $fruitListContainer = $('#fruits');
+    var $basketContainer = $('#basket');
     
-    
-    document.getElementById('newfruit').addEventListener('keyup', function(e) {
-        if (e.keyCode == 13) { // enter key
-            var thisVal = e.target.value.trim();
-            var valIndex = fruitsInFruitsList.indexOf(thisVal);
+    $('#newfruit').keyup(function(e) {
+        if (e.keyCode == 13) {
+            var val = $(this).val();
+            var valIndex = fruitsInFruitsList.indexOf(val);
             if (valIndex > -1) {
                 e.preventDefault();
-                
                 fruitsInFruitsList.splice(valIndex, 1);
-                fruitsInBasket.push(thisVal);
+                fruitsInBasket.push(val);
                 
-                drawDom();
-                e.target.value = "";
+                draw();
+                $(this).val('');
             }
         }
     });
-};
-
-
-function drawDom() { // we can declare fn after cause the engine hoists function declarations in this form
-    fruitsListContainer.innerHTML = "";
-    fruitsInFruitsList.forEach(function(fruit) {
-        var liEl = document.createElement('LI');
-        liEl.innerHTML = fruit;
-        fruitsListContainer.appendChild(liEl);
-    });
-    basketContainer.innerHTML = "";
-    fruitsInBasket.forEach(function(fruit) {
-        var liEl = document.createElement('LI');
-        liEl.innerHTML = fruit;
-        basketContainer.appendChild(liEl);
-    });
-};
+    
+    draw(); // init
+    
+    function draw() {
+        $fruitListContainer.html(fruitsInFruitsList.reduce(function(accum, fruit) {
+            return accum + '<li>' + fruit + '</li>';
+        }, ''));
+        $basketContainer.html(fruitsInBasket.reduce(function(accum, fruit) {
+            return accum + '<li>' + fruit + '</li>';
+        }, ''));
+    }
+    
+    
+});
